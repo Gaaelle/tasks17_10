@@ -3,6 +3,8 @@ const sass = require('gulp-sass');
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
 
+var jsPath = 'src/**/*.js'
+
 gulp.task('hello', function() {
   console.log('hello')
 });
@@ -18,12 +20,16 @@ gulp.task('sass-watcher', function() {
 });
 
 gulp.task('js', function() {
-  gulp.src('src/**/*.js')
+  gulp.src(jsPath)
     .pipe(concat('main.js'))
     .pipe(uglify())
     .pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('js-watcher', function() {
-  gulp.watch('src/**/*.js', ['js']);
+  gulp.watch(jsPath, ['js']);
 });
+
+gulp.task('dev', ['sass-watcher', 'js-watcher']);
+
+gulp.task('default', ['styles', 'js']);
