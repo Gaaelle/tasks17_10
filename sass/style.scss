@@ -8,4 +8,7 @@ body {
   margin: 0;
   background-color: $mainColor;
   color: green;
+  font: 1.2em Calibri;
 }
+
+@import "button.scss";
